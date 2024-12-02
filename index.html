@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳转到手机银行</title>
+    <title>欢迎使用陕西农信个人手机银行</title>
     <style>
-        /* 样式调整，去掉背景，添加文本说明 */
+        /* 页面样式，去除背景图片，添加文本说明 */
         body {
             margin: 0;
             padding: 0;
@@ -63,17 +63,23 @@
         function redirectToApp() {
             var isWeChat = /MicroMessenger/i.test(navigator.userAgent);  // 检查是否在微信中
             var appUrl = "sxxhbank://mbank/startApp?menuid=0906";  // 手机银行的URL Scheme
+            var downloadUrl = "https://wbank.96262.com/icap-wbank/page/03/0304/0304.html";  // 手机银行下载链接
 
             // 微信浏览器中，提示用户使用手机浏览器打开
             if (isWeChat) {
                 alert("请点击右上角菜单，选择在浏览器中打开");
+
+                // 微信中，跳转到下载链接
+                setTimeout(function() {
+                    window.location.href = downloadUrl;
+                }, 500);
             } else {
                 // 在浏览器中，直接跳转到 APP
                 window.location.href = appUrl;
 
-                // 如果没有响应，2秒后跳转到备用网页（这里不再跳转备用网页）
+                // 如果没有响应，2秒后跳转到下载页面
                 setTimeout(function() {
-                    alert("无法跳转到手机银行，确保你已经安装手机银行APP。");
+                    window.location.href = downloadUrl;
                 }, 2000);
             }
         }
@@ -81,7 +87,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>欢迎使用手机银行</h1>
+        <h1>欢迎使用陕西农信个人手机银行</h1>
         <p>点击下面的按钮，跳转到手机银行应用：</p>
         
         <!-- 按钮触发跳转 -->
