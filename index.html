@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转到手机银行</title>
+    <script type="text/javascript">
+        function redirectToApp() {
+            // 通过 URL Scheme 跳转到手机银行APP
+            window.location.href = "sxxhbank://mbank/startApp?menuid=0906";
+            
+            // 如果没有安装 APP，2秒后跳转到备用网页
+            setTimeout(function() {
+                window.location.href = "https://www.96262.com"; // 备用链接
+            }, 2000);
+        }
+    </script>
+</head>
+<body>
+    <h1>欢迎使用手机银行</h1>
+    <p>点击下面的图片跳转到手机银行应用：</p>
+    <img src="https://via.placeholder.com/150" alt="点击跳转" style="cursor: pointer;" onclick="redirectToApp()">
+</body>
+</html>
