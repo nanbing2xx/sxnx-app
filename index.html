@@ -1,26 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到手机银行</title>
     <style>
-        /* 设置背景图片 */
+        /* 样式调整，去掉背景，添加文本说明 */
         body {
-            background-image: url('https://raw.githubusercontent.com/nanbing2xx/sxnx-app/84990858631e535190f2eefbde879c1454d55425/12.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
             margin: 0;
-            height: 100vh;
+            padding: 0;
+            height: 100vh; /* 页面占满整个高度 */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #333; /* 默认文字颜色 */
             text-align: center;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* 页面背景色 */
         }
-
 
         .container {
             padding: 20px;
@@ -43,11 +40,11 @@
 
         .button {
             cursor: pointer;
-            padding: 10px 20px;
+            padding: 15px 30px; /* 增大按钮的尺寸 */
             background-color: #007bff;
             color: white;
-            border-radius: 5px;
-            font-size: 1.2em;
+            border-radius: 8px;
+            font-size: 1.5em; /* 增大字体 */
             text-decoration: none;
             margin-top: 20px;
         }
@@ -83,9 +80,9 @@
     </script>
 </head>
 <body>
-    <div>
-        <!-- 蓝色按钮 -->
-        <a href="javascript:void(0)" class="btn" onclick="redirectToApp()">点击前往陕西农信任务中心</a>
+    <div class="container">
+        <!-- 按钮触发跳转 -->
+        <a href="javascript:void(0);" class="button" onclick="redirectToApp()">点击前往陕西农信任务中心</a>
         
         <!-- 提示用户需要使用浏览器打开 -->
         <p class="warning">如果你在微信中，请选择右上角菜单，选择在浏览器中打开。</p>
