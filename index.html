@@ -7,7 +7,7 @@
     <style>
         /* 设置背景图片 */
         body {
-            background-image: url('https://github.com/nanbing2xx/sxnx-app/blob/84990858631e535190f2eefbde879c1454d55425/12.jpg');
+            background-image: url('https://raw.githubusercontent.com/nanbing2xx/sxnx-app/84990858631e535190f2eefbde879c1454d55425/12.jpg');
             background-size: cover; /* 背景图片自动调整大小，确保覆盖整个页面 */
             background-position: center; /* 背景图片居中显示 */
             background-repeat: no-repeat; /* 防止背景图片重复 */
@@ -34,7 +34,8 @@
         img {
             cursor: pointer;
             max-width: 100%;
-            width: 200px;
+            width: 150px; /* 图片尺寸为 150x150 */
+            height: 150px;
             margin-top: 20px;
         }
     </style>
@@ -46,15 +47,14 @@
 
             // 微信浏览器中，提示用户使用手机浏览器打开
             if (isWeChat) {
-                // 提示用户手动打开
                 alert("请点击右上角菜单，选择在浏览器中打开");
 
-                // 使用 window.open() 打开外部链接，尝试用手机默认浏览器打开
+                // 提示用户使用手机浏览器打开
                 setTimeout(function() {
-                    window.open(backupUrl, "_system");
+                    window.location.href = backupUrl;  // 如果用户在微信中，2秒后跳转到备用页面
                 }, 500);
             } else {
-                // 在其他浏览器中，直接跳转
+                // 在浏览器中，直接跳转
                 window.location.href = appUrl;
 
                 // 如果没有响应，2秒后跳转到备用网页
@@ -70,6 +70,7 @@
         <h1>欢迎使用手机银行</h1>
         <p>点击下面的图片跳转到手机银行应用：</p>
         
+        <!-- 点击图片触发跳转 -->
         <img src="https://via.placeholder.com/150" alt="点击跳转" onclick="redirectToApp()">
         
         <p class="message" id="message">请稍等...</p>
