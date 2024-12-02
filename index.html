@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到手机银行</title>
     <style>
-        /* 样式调整，去掉背景，添加文本说明 */
+        /* 设置背景图片 */
         body {
+            background-image: url('https://raw.githubusercontent.com/nanbing2xx/sxnx-app/84990858631e535190f2eefbde879c1454d55425/12.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin: 0;
-            padding: 0;
-            height: 100vh; /* 页面占满整个高度 */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #333; /* 默认文字颜色 */
+            color: white;
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4; /* 页面背景色 */
         }
+
 
         .container {
             padding: 20px;
@@ -80,12 +83,9 @@
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>欢迎使用陕西农信个人手机银行</h1>
-        <p>点击下面的按钮，跳转到手机银行应用：</p>
-        
-        <!-- 按钮触发跳转 -->
-        <a href="javascript:void(0);" class="button" onclick="redirectToApp()">点击跳转</a>
+    <div>
+        <!-- 蓝色按钮 -->
+        <a href="javascript:void(0)" class="btn" onclick="redirectToApp()">点击前往陕西农信任务中心</a>
         
         <!-- 提示用户需要使用浏览器打开 -->
         <p class="warning">如果你在微信中，请选择右上角菜单，选择在浏览器中打开。</p>
