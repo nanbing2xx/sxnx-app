@@ -17,6 +17,11 @@
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4; /* 页面背景色 */
+            box-sizing: border-box; /* 确保元素尺寸计算包括边框和内边距 */
+        }
+
+        * {
+            box-sizing: border-box; /* 所有元素使用 border-box 模式 */
         }
 
         .container {
@@ -41,16 +46,18 @@
         .button {
             cursor: pointer;
             padding: 15px 30px; /* 增大按钮的尺寸 */
-            background-color: #007bff;
-            color: white;
+            background-color: #007bff !important; /* 强制设置背景颜色 */
+            color: white !important; /* 强制设置字体颜色 */
             border-radius: 8px;
-            font-size: 1.5em; /* 增大字体 */
+            font-size: 1.5em !important; /* 增大字体 */
             text-decoration: none;
             margin-top: 20px;
+            min-width: 250px; /* 确保按钮最小宽度 */
+            display: inline-block; /* 保证按钮是块级元素，确保宽度生效 */
         }
 
         .button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3 !important; /* 强制设置鼠标悬停时的背景色 */
         }
 
         .warning {
