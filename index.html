@@ -25,21 +25,24 @@
     <script type="text/javascript">
         function redirectToApp() {
             var isWeChat = /MicroMessenger/i.test(navigator.userAgent);  // 检查是否在微信中
-            var appUrl = "sxxhbank://mbank/startApp?menuid=0906";
+            var appUrl = "sxxhbank://mbank/startApp?menuid=0906";  // APP的URL Scheme
             var backupUrl = "https://www.96262.com";  // 备用网页链接
-            var timeout;
 
-            // 微信浏览器中，跳转到备用网页
+            // 微信浏览器中，提示用户使用手机浏览器打开
             if (isWeChat) {
-                document.getElementById('message').textContent = "您正在微信中，跳转到网页版...";
-                window.location.href = backupUrl;
+                // 提示用户手动打开
+                alert("请点击右上角菜单，选择在浏览器中打开");
+
+                // 使用 window.open() 打开外部链接，尝试用手机默认浏览器打开
+                setTimeout(function() {
+                    window.open(backupUrl, "_system");
+                }, 500);
             } else {
-                // 否则尝试跳转到 APP
-                document.getElementById('message').textContent = "正在跳转到手机银行应用...";
+                // 在其他浏览器中，直接跳转
                 window.location.href = appUrl;
 
                 // 如果没有响应，2秒后跳转到备用网页
-                timeout = setTimeout(function() {
+                setTimeout(function() {
                     window.location.href = backupUrl;
                 }, 2000);
             }
