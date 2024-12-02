@@ -4,19 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到手机银行</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        img {
+            cursor: pointer;
+            max-width: 100%;
+            width: 200px;
+            margin-top: 20px;
+        }
+        .message {
+            font-size: 16px;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
     <script type="text/javascript">
         function redirectToApp() {
-            // 通过URL Scheme跳转到手机银行APP
-            window.location.href = "sxxhbank://mbank/startApp?menuid=0906";
-            
-            // 设置一个超时跳转，防止在设备没有安装APP时无反应
-            setTimeout(function() {
-                window.location.href = "https://www.sxxhbank.com"; // 或者一个备用网页
-            }, 2000);
+            var isWeChat = /MicroMessenger/i.test(navigator.userAgent);  // 检查是否在微信中
+            var appUrl = "sxxhbank://mbank/startApp?menuid=0906";
+            var backupUrl = "https://www.96262.com";  // 备用网页链接
+            var timeout;
+
+            // 微信浏览器中，跳转到备用网页
+            if (isWeChat) {
+                document.getElementById('message').textContent = "您正在微信中，跳转到网页版...";
+                window.location.href = backupUrl;
+            } else {
+                // 否则尝试跳转到 APP
+                document.getElementById('message').textContent = "正在跳转到手机银行应用...";
+                window.location.href = appUrl;
+
+                // 如果没有响应，2秒后跳转到备用网页
+                timeout = setTimeout(function() {
+                    window.location.href = backupUrl;
+                }, 2000);
+            }
         }
     </script>
 </head>
 <body>
-    <img src="图片URL" alt="点击跳转" style="cursor: pointer;" onclick="redirectToApp()">
+    <h1>欢迎使用手机银行</h1>
+    <p>点击下面的图片跳转到手机银行应用：</p>
+    
+    <img src="https://via.placeholder.com/150" alt="点击跳转" onclick="redirectToApp()">
+    
+    <p class="message" id="message">请稍等...</p>
 </body>
 </html>
