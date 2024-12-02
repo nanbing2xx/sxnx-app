@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>跳转到手机银行</title>
     <style>
-        /* 设置背景图片 */
+        /* 样式调整，去掉背景，添加文本说明 */
         body {
-            background-image: url('https://raw.githubusercontent.com/nanbing2xx/sxnx-app/84990858631e535190f2eefbde879c1454d55425/12.jpg');
-            background-size: cover; /* 背景图片自动调整大小，确保覆盖整个页面 */
-            background-position: center; /* 背景图片居中显示 */
-            background-repeat: no-repeat; /* 防止背景图片重复 */
             margin: 0;
-            height: 100vh; /* 设置页面的高度为 100vh，确保背景图片充满整个页面 */
+            padding: 0;
+            height: 100vh; /* 页面占满整个高度 */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white; /* 设置文本颜色为白色 */
+            color: #333; /* 默认文字颜色 */
             text-align: center;
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* 页面背景色 */
+        }
+
+        .container {
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
         }
 
         h1 {
@@ -26,54 +33,62 @@
             margin-bottom: 20px;
         }
 
-        .message {
+        p {
             font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .button {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
             margin-top: 20px;
         }
 
-        img {
-            cursor: pointer;
-            max-width: 100%;
-            width: 150px; /* 图片尺寸为 150x150 */
-            height: 150px;
-            margin-top: 20px;
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .warning {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: red;
         }
     </style>
     <script type="text/javascript">
         function redirectToApp() {
             var isWeChat = /MicroMessenger/i.test(navigator.userAgent);  // 检查是否在微信中
             var appUrl = "sxxhbank://mbank/startApp?menuid=0906";  // 手机银行的URL Scheme
-            var backupUrl = "https://www.96262.com";  // 备用网页链接
 
             // 微信浏览器中，提示用户使用手机浏览器打开
             if (isWeChat) {
                 alert("请点击右上角菜单，选择在浏览器中打开");
-
-                // 提示用户使用手机浏览器打开
-                setTimeout(function() {
-                    window.location.href = backupUrl;  // 如果用户在微信中，2秒后跳转到备用页面
-                }, 500);
             } else {
-                // 在浏览器中，直接跳转
+                // 在浏览器中，直接跳转到 APP
                 window.location.href = appUrl;
 
-                // 如果没有响应，2秒后跳转到备用网页
+                // 如果没有响应，2秒后跳转到备用网页（这里不再跳转备用网页）
                 setTimeout(function() {
-                    window.location.href = backupUrl;
+                    alert("无法跳转到手机银行，确保你已经安装手机银行APP。");
                 }, 2000);
             }
         }
     </script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <h1>欢迎使用手机银行</h1>
-        <p>点击下面的图片跳转到手机银行应用：</p>
+        <p>点击下面的按钮，跳转到手机银行应用：</p>
         
-        <!-- 点击图片触发跳转 -->
-        <img src="https://via.placeholder.com/150" alt="点击跳转" onclick="redirectToApp()">
+        <!-- 按钮触发跳转 -->
+        <a href="javascript:void(0);" class="button" onclick="redirectToApp()">点击跳转</a>
         
-        <p class="message" id="message">请稍等...</p>
+        <!-- 提示用户需要使用浏览器打开 -->
+        <p class="warning">如果你在微信中，请选择右上角菜单，选择在浏览器中打开。</p>
     </div>
 </body>
 </html>
